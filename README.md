@@ -1,6 +1,6 @@
-Tkinter Application
+##Tkinter Application
 
-Приложение предназначено для обработки рабочей информации, хранящейся в БД приложенияб и вывода в графики(matplotlib, pandas) по выбранным параметрам. Использует MySQL в качестве базы данных.
+Приложение предназначено для обработки рабочей информации, хранящейся в БД приложения, и вывода в графику(matplotlib, pandas) по выбранным параметрам. Использует MySQL в качестве базы данных.
 
 Перед тем как начать, убедитесь, что у вас установлены следующие компоненты:
 
@@ -11,18 +11,19 @@ Tkinter Application
 
 Установка
 
-python -m venv venv source venv/bin/activate # Для macOS/Linux venv\Scripts\activate # Для Windows
-Установите зависимости:
+python -m venv venv source .venv/bin/activate 
+
+# Для macOS/Linux .venv\Scripts\activate
 
 pip install -r requirements.txt
 
-Настройте базу данных: Создайте базу данных в MySQL и обновите настройки в .env вашего проекта:
+Настройте базу данных: Создайте базу данных в MySQL (database_example.txt) и обновите настройки в .env вашего проекта:
 
-host = "host"
-port = 'port'
-user = "admin"
-password = "password"
-database = "database"
+DB_HOST="host"
+DB_PORT=port
+DB_USER="user"
+DB_PASSWORD="password"
+DB_NAME="database_name"
 
-##Запуск приложения
+##Запуск
 Чтобы запустить приложение, выполните следующую команду: python3 main.py
