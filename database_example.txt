@@ -1,0 +1,53 @@
+Database Structure(original)
+
+Table: `info`
+FTTX connections and technical data table storing comprehensive information about subscriber connections.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | INT (Primary Key) | Unique record identifier |
+| `date` | DATE | Connection installation date |
+| `city` | VARCHAR | City name |
+| `street` | VARCHAR | Street name |
+| `home` | VARCHAR | House number/building |
+| `apartment` | SMALLINT | Apartment/unit number |
+| `name` | VARCHAR | Subscriber name |
+| `reestr` | SMALLINT | Restorer/technician identifier |
+| `cable_1` | SMALLINT, NULLABLE | Cable 1 identifier or length |
+| `cable_2` | SMALLINT, NULLABLE | Cable 2 identifier or length |
+| `cable_3` | SMALLINT, NULLABLE | Cable 3 identifier or length |
+| `connector` | SMALLINT, NULLABLE | Connector type or count |
+
+Current Usage in Application
+Your application currently uses only:
+- **`date`** - for date range filtering and monthly aggregation
+- **`street`** - for grouping and counting connections by street
+
+Potential Future Extensions
+- **`city` + `home` + `apartment`** - for detailed address analysis
+- **`name`** - for subscriber-specific reports
+- **`reestr`** - for technician performance analytics
+- **`cable_*` fields** - for cable infrastructure analysis
+- **`connector`** - for connector type statistics
+
+SQL Creation Script
+```sql
+CREATE TABLE info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    city VARCHAR(100),
+    street VARCHAR(255) NOT NULL,
+    home VARCHAR(20),
+    apartment SMALLINT,
+    name VARCHAR(255),
+    reestr SMALLINT,
+    cable_1 SMALLINT,
+    cable_2 SMALLINT,
+    cable_3 SMALLINT,
+    connector SMALLINT
+);
+
+-- Recommended indexes for current usage
+CREATE INDEX idx_date ON info(date);
+CREATE INDEX idx_street ON info(street);
+CREATE INDEX idx_city_street ON info(city, street);
