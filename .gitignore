@@ -53,6 +53,7 @@ Thumbs.db
 
 # текстовые файлы
 *.txt
+!database_example.txt
 *.doc
 *.docx
 *.csv
